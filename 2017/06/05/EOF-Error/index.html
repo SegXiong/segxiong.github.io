@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>EOF Error | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="errors," />
+  
+
+  <meta name="description" content="今天队友上传了 JDStore 大赛的第一版作品，测试的时候点击生成订单出现如下图的报错 由于不是使用的自己的heroku账号，无法查看 heroku logs，所以拉下本地进行测试。在 git pull 之后重开 server，进行到同样的步骤（生成订单）的时候，出现如下图的报错信息。 在一番Google之后将错误的可能锁定在生成订单的同时向用户发送邮件的 action mailer，在cont">
+<meta name="keywords" content="errors">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EOF Error">
+<meta property="og:url" content="http://segxiong.github.io/2017/06/05/EOF-Error/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="今天队友上传了 JDStore 大赛的第一版作品，测试的时候点击生成订单出现如下图的报错 由于不是使用的自己的heroku账号，无法查看 heroku logs，所以拉下本地进行测试。在 git pull 之后重开 server，进行到同样的步骤（生成订单）的时候，出现如下图的报错信息。 在一番Google之后将错误的可能锁定在生成订单的同时向用户发送邮件的 action mailer，在cont">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fgaqqwz8jfj30ru09fjru.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fgaqu1nlguj30xd0feq4r.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fgar9t87p7j318g0u341h.jpg">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EOF Error">
+<meta name="twitter:description" content="今天队友上传了 JDStore 大赛的第一版作品，测试的时候点击生成订单出现如下图的报错 由于不是使用的自己的heroku账号，无法查看 heroku logs，所以拉下本地进行测试。在 git pull 之后重开 server，进行到同样的步骤（生成订单）的时候，出现如下图的报错信息。 在一番Google之后将错误的可能锁定在生成订单的同时向用户发送邮件的 action mailer，在cont">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fgaqqwz8jfj30ru09fjru.jpg">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-EOF-Error" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">EOF Error</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.06.05</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/errors/">errors</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>今天队友上传了 JDStore 大赛的第一版作品，测试的时候点击生成订单出现如下图的报错<br><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fgaqqwz8jfj30ru09fjru.jpg" alt=""></p>
+<p>由于不是使用的自己的heroku账号，无法查看 <code>heroku logs</code>，所以拉下本地进行测试。在 <code>git pull</code> 之后重开 server，进行到同样的步骤（生成订单）的时候，出现如下图的报错信息。<br><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fgaqu1nlguj30xd0feq4r.jpg" alt=""></p>
+<p>在一番Google之后将错误的可能锁定在生成订单的同时向用户发送邮件的 <code>action mailer</code>，在controller中注释掉 Mailer 之后再测试，报错问题消失。</p>
+<p>由于我们使用的是 sendcloud 邮件服务，所以在专门针对 sendcloud 进行问题搜索，最后的发现了类似的<a href="https://github.com/luckyyang/sendcloud-demo/issues/8" target="_blank" rel="external">案例</a>。</p>
+<p>最后联络队友，查询 sendcloud 账户设置，最终找到问题根源。<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fgar9t87p7j318g0u341h.jpg" alt=""></p>
+<p>最后想了解更多 EOFError 的，可自行参考此<a href="https://stackoverflow.com/questions/1272394/what-is-an-eoferror-in-ruby-file-i-o" target="_blank" rel="external">链接</a>。</p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/05/25/注释代码不当引起的一个BUG/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/06/09/Turbolinks/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

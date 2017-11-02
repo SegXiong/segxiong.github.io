@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>find_by find 和 where | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="小结," />
+  
+
+  <meta name="description" content="find：方法限定了查找的参数一定是id，在查找的id不存在的情况下，会抛出exception ActiveRecord::RecordNotFound。  find_by： 查找的参数有多种，可以是任意的model栏位信息。 在查找的id不存在的情况下，会返回nil。  where：返回的是一组满足参数条件的对象合集。在查找的id不存在的情况下，会返回nil。   另外，find和find_b">
+<meta name="keywords" content="小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="find_by find 和 where">
+<meta property="og:url" content="http://segxiong.github.io/2017/05/20/find-by-find-和-where/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="find：方法限定了查找的参数一定是id，在查找的id不存在的情况下，会抛出exception ActiveRecord::RecordNotFound。  find_by： 查找的参数有多种，可以是任意的model栏位信息。 在查找的id不存在的情况下，会返回nil。  where：返回的是一组满足参数条件的对象合集。在查找的id不存在的情况下，会返回nil。   另外，find和find_b">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="find_by find 和 where">
+<meta name="twitter:description" content="find：方法限定了查找的参数一定是id，在查找的id不存在的情况下，会抛出exception ActiveRecord::RecordNotFound。  find_by： 查找的参数有多种，可以是任意的model栏位信息。 在查找的id不存在的情况下，会返回nil。  where：返回的是一组满足参数条件的对象合集。在查找的id不存在的情况下，会返回nil。   另外，find和find_b">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-find-by-find-和-where" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">find_by find 和 where</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.05.20</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Tips/">Tips</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <ul>
+<li><p><code>find</code>：方法限定了查找的参数一定是id，在查找的id不存在的情况下，会抛出exception ActiveRecord::RecordNotFound。</p>
+</li>
+<li><p><code>find_by</code>： 查找的参数有多种，可以是任意的model栏位信息。 在查找的id不存在的情况下，会返回nil。</p>
+</li>
+<li><p><code>where</code>：返回的是一组满足参数条件的对象合集。在查找的id不存在的情况下，会返回nil。</p>
+</li>
+</ul>
+<p>另外，<code>find</code>和<code>find_by</code>只会返回一条数据。如果符合<code>find_by</code>条件的数据有多条，那么<code>find_by</code>会返回最新的那条数据。</p>
+<p>tips：</p>
+<ul>
+<li><p><code>nil?</code> 可以应用到任何对象上，只有当对象的值是nil的时候才返回true。</p>
+</li>
+<li><p><code>empty?</code> 可以应用到数组，字符串和哈希对象上，只有当这三种对象的长度为0的时候才返回true。另外当用到其他对象时会抛出NoMethodError异常。</p>
+</li>
+<li><p><code>blank?</code> 可以应用到任何对象上，当布尔值为true，数组为nil，哈希值为nil，对象为数值时返回值为false。其余情况返回值为true，</p>
+</li>
+<li><p><code>present?</code> 与<code>blank?</code>对应，所有值取反。</p>
+</li>
+</ul>
+<p><a href="http://stackoverflow.com/questions/885414/a-concise-explanation-of-nil-v-empty-v-blank-in-ruby-on-rails" target="_blank" rel="external">参考资料</a>。</p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/05/19/session/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/05/22/rails中时间和时区的问题/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>ORID-04-25 | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="日记," />
+  
+
+  <meta name="description" content="做完全栈营的魔改大赛前期教程后，发现了登录弹窗在注册的时候密码位数不够，或者登录的时候密码错误的话，页面会跳转到以前全屏的报错页面。这种分裂的用户体验并不友好，为了解决这个为题，我尝试让报错页面也显示在弹窗里，以下是大致的过程。 一开始通过Google找到了这个在stackoverflow上一个登录弹窗的问题，回答者也提到了这个跳转分裂的问题。给出的解决方案是用一个叫做client_side_va">
+<meta name="keywords" content="日记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ORID-04-25">
+<meta property="og:url" content="http://segxiong.github.io/2017/04/25/ORID-04-25/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="做完全栈营的魔改大赛前期教程后，发现了登录弹窗在注册的时候密码位数不够，或者登录的时候密码错误的话，页面会跳转到以前全屏的报错页面。这种分裂的用户体验并不友好，为了解决这个为题，我尝试让报错页面也显示在弹窗里，以下是大致的过程。 一开始通过Google找到了这个在stackoverflow上一个登录弹窗的问题，回答者也提到了这个跳转分裂的问题。给出的解决方案是用一个叫做client_side_va">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ORID-04-25">
+<meta name="twitter:description" content="做完全栈营的魔改大赛前期教程后，发现了登录弹窗在注册的时候密码位数不够，或者登录的时候密码错误的话，页面会跳转到以前全屏的报错页面。这种分裂的用户体验并不友好，为了解决这个为题，我尝试让报错页面也显示在弹窗里，以下是大致的过程。 一开始通过Google找到了这个在stackoverflow上一个登录弹窗的问题，回答者也提到了这个跳转分裂的问题。给出的解决方案是用一个叫做client_side_va">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-ORID-04-25" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">ORID-04-25</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.04.25</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/meetup/">meetup</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>做完全栈营的魔改大赛前期教程后，发现了登录弹窗在注册的时候密码位数不够，或者登录的时候密码错误的话，页面会跳转到以前全屏的报错页面。这种分裂的用户体验并不友好，为了解决这个为题，我尝试让报错页面也显示在弹窗里，以下是大致的过程。</p>
+<p>一开始通过Google找到了<a href="http://stackoverflow.com/questions/24101944/devise-bootstrap-modal-link-and-error-catching" target="_blank" rel="external">这个</a>在stackoverflow上一个登录弹窗的问题，回答者也提到了这个跳转分裂的问题。给出的解决方案是用一个叫做client_side_validations的gem，做客户端的验证。经过自己的安装测试，这个gem和simple_form有冲突，在安装后并无任何改动的情况下，刷新首页会跑出错误，在<code>&lt;%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %&gt;</code>这一条代码抛出argument参数个数的错误。</p>
+<p>然后找到了一些<a href="http://formvalidation.io/examples/showing-messages-modal/" target="_blank" rel="external">另外的解决方案</a>，但是这个方案使用的是script脚本直接控制form标签，和教程原先的方案有差别，无法直接修改套用，只能彻底修改方案。这样这个问题算是解了一半。</p>
+<p>最后的在meetup的当晚，一位同学通过logdown找到了这个<a href="http://marcfly7.logdown.com/posts/1437496-shopping-magic-modified-login-popup-optimization-tutorial" target="_blank" rel="external">最终的解决方案</a>，经过测试即使登录的时候出现错误也不会跳转，会在弹窗显示错误信息。但是还是发现了一个问题，索然注册的时候密码太短会提示，不过在登录的时候密码错误却不会提示，研究了一下估计是这条代码的原因才实现了密码过短提示<code>&lt;%= f.password_field :password, autocomplete: &quot;off&quot;, required: true,minlength: 8, class: &quot;form-control&quot;, placeholder: &quot;Password(8 character minimum)&quot; %&gt;</code>这个方法也不能算是全解了这个问题。</p>
+<p>之后通过一番Google汇总的信息，要实现直接在弹窗实现所有错误提示，需要使用到ajax。通过这一番的挖掘，由于学习尚未深入暂时先在这里打住，之后学习到ajax的时候再继续解决这个问题。</p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/04/23/meetup-小结-4-23/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/04/27/两个问题/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>meetup 小结(5.14) | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="小结," />
+  
+
+  <meta name="description" content="好用的工具 awesome_rails_console 是一个是console更易读的一个gem。需要注意的是这个gem应该放在Gemfile的development测试环境中。  better_errors 是一个是报错画面刚易读的一个gem。同样这个gem也应该放到测试环境中。   关于index教程的商品index在删除中间的序号的商品后，index序号不会替位补上。这样的体验并不好，这里补">
+<meta name="keywords" content="小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="meetup 小结(5.14)">
+<meta property="og:url" content="http://segxiong.github.io/2017/05/14/meetup-小结-5-14/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="好用的工具 awesome_rails_console 是一个是console更易读的一个gem。需要注意的是这个gem应该放在Gemfile的development测试环境中。  better_errors 是一个是报错画面刚易读的一个gem。同样这个gem也应该放到测试环境中。   关于index教程的商品index在删除中间的序号的商品后，index序号不会替位补上。这样的体验并不好，这里补">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="meetup 小结(5.14)">
+<meta name="twitter:description" content="好用的工具 awesome_rails_console 是一个是console更易读的一个gem。需要注意的是这个gem应该放在Gemfile的development测试环境中。  better_errors 是一个是报错画面刚易读的一个gem。同样这个gem也应该放到测试环境中。   关于index教程的商品index在删除中间的序号的商品后，index序号不会替位补上。这样的体验并不好，这里补">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#好用的工具"><span class="toc-text">好用的工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于index"><span class="toc-text">关于index</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#收获"><span class="toc-text">收获</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-meetup-小结-5-14" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">meetup 小结(5.14)</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.05.14</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/meetup/">meetup</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="好用的工具"><a href="#好用的工具" class="headerlink" title="好用的工具"></a>好用的工具</h2><ol>
+<li><p><code>awesome_rails_console</code> 是一个是console更易读的一个gem。需要注意的是这个gem应该放在Gemfile的development测试环境中。</p>
+</li>
+<li><p><code>better_errors</code> 是一个是报错画面刚易读的一个gem。同样这个gem也应该放到测试环境中。</p>
+</li>
+</ol>
+<h2 id="关于index"><a href="#关于index" class="headerlink" title="关于index"></a>关于index</h2><p>教程的商品index在删除中间的序号的商品后，index序号不会替位补上。这样的体验并不好，这里补上一位同学找到的解决方案。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">（略）</div><div class="line">    &lt;% @products.each_with_index do |product, index| %&gt;</div><div class="line">      &lt;tr&gt;</div><div class="line">        &lt;td&gt;</div><div class="line">          &lt;%= index+1 %&gt;</div><div class="line">        &lt;/td&gt;</div><div class="line">（略）</div></pre></td></tr></table></figure></p>
+<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><p>网上商店魔改大赛还没开始，但是meetup的各位同学已经跃跃欲试，由于有了上一次招聘网站魔改大赛的经验，这次大家一致认为抢先发布完整功能的MVP，充分利用长尾效应是本次大赛的先发关键。自己的招聘大赛作品由于进度慢，发布第一版的时候大赛已经开始1周多，曝光率一直比较低，以至于最后影响到迭代的进度（心情）。争取在这次大赛开始前早做好准备迎接这一次挑战。</p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/05/12/NameError-uninitialized-constant-Product-ImageUploader/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/05/15/Routes-member-do-和-collection-do/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

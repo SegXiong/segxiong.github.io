@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>belongs_to 和 has_many (has_one) | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="小结," />
+  
+
+  <meta name="description" content="先说结论：belongs_to 和 has_many (has_one)并不一定是成对出现的。理论上belongs_to 可以脱离has_many (has_one)单独使用。 以Order和Customer这两个model为例，单方面的声明Order belongs_to :customer，我们仍然可以通过Order对象用.customer拿到customer对象。但是由于缺少双向的链接，我们">
+<meta name="keywords" content="小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="belongs_to 和 has_many (has_one)">
+<meta property="og:url" content="http://segxiong.github.io/2017/05/16/belongs-to-和-has-many-has-one/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="先说结论：belongs_to 和 has_many (has_one)并不一定是成对出现的。理论上belongs_to 可以脱离has_many (has_one)单独使用。 以Order和Customer这两个model为例，单方面的声明Order belongs_to :customer，我们仍然可以通过Order对象用.customer拿到customer对象。但是由于缺少双向的链接，我们">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="belongs_to 和 has_many (has_one)">
+<meta name="twitter:description" content="先说结论：belongs_to 和 has_many (has_one)并不一定是成对出现的。理论上belongs_to 可以脱离has_many (has_one)单独使用。 以Order和Customer这两个model为例，单方面的声明Order belongs_to :customer，我们仍然可以通过Order对象用.customer拿到customer对象。但是由于缺少双向的链接，我们">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-belongs-to-和-has-many-has-one" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">belongs_to 和 has_many (has_one)</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.05.16</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Tips/">Tips</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>先说结论：belongs_to 和 has_many (has_one)并不一定是成对出现的。理论上belongs_to 可以脱离has_many (has_one)单独使用。</p>
+<p>以Order和Customer这两个model为例，单方面的声明Order <code>belongs_to :customer</code>，我们仍然可以通过Order对象用<code>.customer</code>拿到customer对象。但是由于缺少双向的链接，我们并不能通过customer对象用<code>.order</code>拿到order对象。这是又rails ActiveRecord决定的，在做association链接的同时，rails内部为对象添加了一些内建的方法。具体可<a href="http://guides.rubyonrails.org/association_basics.html#has-one-association-reference" target="_blank" rel="external">参考文档</a>。</p>
+<p>今天一个额外的小知识点是build/new/create的区别。</p>
+<ul>
+<li><p>new：只是在内存中产生了一笔数据，但是并没有写入到数据库中，需要搭配<code>.save</code>才能写入到数据库中。</p>
+</li>
+<li><p>create：直接在数据库中生成数据。 等同于<code>.new</code> + <code>.save</code>。</p>
+</li>
+<li><p>build：在后期的rails版本中已经等同于<code>.new</code>，是new的alias。（<a href="https://github.com/rails/rails/blob/master/activerecord/lib/active_record/relation.rb#L128" target="_blank" rel="external">参考</a>）</p>
+</li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/05/15/Routes-member-do-和-collection-do/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/05/17/helper-method/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

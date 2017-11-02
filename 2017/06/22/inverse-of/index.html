@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>:inverse_of | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="errors," />
+  
+
+  <meta name="description" content="做ihower老师的百宝箱课程，为event添加tickets嵌套表单的章节中，发现一个BUG，在新建event事件的同时创建tickets会导致错误，server端数据库rollback transaction。  查看view端的错误信息，提示Tickets event必须存在。  出现这个错误的原因是创建tickets的时候event事件还未写入数据库，所以数据库中找不到该tickets的e">
+<meta name="keywords" content="errors">
+<meta property="og:type" content="article">
+<meta property="og:title" content=":inverse_of">
+<meta property="og:url" content="http://segxiong.github.io/2017/06/22/inverse-of/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="做ihower老师的百宝箱课程，为event添加tickets嵌套表单的章节中，发现一个BUG，在新建event事件的同时创建tickets会导致错误，server端数据库rollback transaction。  查看view端的错误信息，提示Tickets event必须存在。  出现这个错误的原因是创建tickets的时候event事件还未写入数据库，所以数据库中找不到该tickets的e">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fgtdwaojj8j30hw0bkq6j.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fgte5hwa0pj30k503374j.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fgtegms088j30m1025mxl.jpg">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=":inverse_of">
+<meta name="twitter:description" content="做ihower老师的百宝箱课程，为event添加tickets嵌套表单的章节中，发现一个BUG，在新建event事件的同时创建tickets会导致错误，server端数据库rollback transaction。  查看view端的错误信息，提示Tickets event必须存在。  出现这个错误的原因是创建tickets的时候event事件还未写入数据库，所以数据库中找不到该tickets的e">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fgtdwaojj8j30hw0bkq6j.jpg">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-inverse-of" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">:inverse_of</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.06.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/errors/">errors</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>做ihower老师的百宝箱课程，为event添加tickets嵌套表单的章节中，发现一个BUG，在新建event事件的同时创建tickets会导致错误，server端数据库<code>rollback transaction</code>。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fgtdwaojj8j30hw0bkq6j.jpg" alt=""></p>
+<p>查看view端的错误信息，提示<code>Tickets event</code>必须存在。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fgte5hwa0pj30k503374j.jpg" alt=""></p>
+<p>出现这个错误的原因是创建tickets的时候event事件还未写入数据库，所以数据库中找不到该tickets的event。而我们之前又在association中连接了event和ticket的关系，导致ticket的验证条件未满足，transaction rollback。</p>
+<p>其实这个问题的解法也很简单，只需要在event的association中写入<code>:inverse_of =&gt; :event</code>这个option，问题就解开了。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fgtegms088j30m1025mxl.jpg" alt=""></p>
+<p><code>:inverse_of</code>加入这个option除了和数据的<a href="https://stackoverflow.com/questions/9296694/what-does-inverse-of-do-what-sql-does-it-generate" target="_blank" rel="external">效能</a>有关系外，最主要的作用就是在association中的<a href="https://www.viget.com/articles/exploring-the-inverse-of-option-on-rails-model-associations" target="_blank" rel="external">指向作用</a>。这也能从其本身的定义中看出来。</p>
+<pre><code>The :inverse_of option specifies the name of the has_many or has_one association that is the inverse of this association.
+</code></pre>
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/06/14/第二次魔改大赛总结/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/06/28/豆知识拾遗集/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

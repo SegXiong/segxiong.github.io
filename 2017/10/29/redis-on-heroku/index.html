@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>redis on heroku | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="小结," />
+  
+
+  <meta name="description" content="Rails 5 开始为了实现与 websocket 的无缝集成引入了 Action Cable 这一组件。 为了实现 Pub/Sub 需要使用数据库暂存数据实现广播消息的作用，以自己的 demo 项目为例使用的是 redis 存储以键值对形式存放的JSON消息数据。  在本地测试成功后上传到 heroku 登录后创建聊天的 channel 报错。  查询 log 后发现错误原因是 redis 无法">
+<meta name="keywords" content="小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis on heroku">
+<meta property="og:url" content="http://segxiong.github.io/2017/10/29/redis-on-heroku/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="Rails 5 开始为了实现与 websocket 的无缝集成引入了 Action Cable 这一组件。 为了实现 Pub/Sub 需要使用数据库暂存数据实现广播消息的作用，以自己的 demo 项目为例使用的是 redis 存储以键值对形式存放的JSON消息数据。  在本地测试成功后上传到 heroku 登录后创建聊天的 channel 报错。  查询 log 后发现错误原因是 redis 无法">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fl2qkjqgcwj30c106rt98.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fl2qqr76smj30ih0ar3yr.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fl2qto17pzj30ht01wt92.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fl2qx8iqh8j30n60av0uw.jpg">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis on heroku">
+<meta name="twitter:description" content="Rails 5 开始为了实现与 websocket 的无缝集成引入了 Action Cable 这一组件。 为了实现 Pub/Sub 需要使用数据库暂存数据实现广播消息的作用，以自己的 demo 项目为例使用的是 redis 存储以键值对形式存放的JSON消息数据。  在本地测试成功后上传到 heroku 登录后创建聊天的 channel 报错。  查询 log 后发现错误原因是 redis 无法">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fl2qkjqgcwj30c106rt98.jpg">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-redis-on-heroku" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">redis on heroku</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.10.29</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Tips/">Tips</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>Rails 5 开始为了实现与 websocket 的无缝集成引入了 Action Cable 这一组件。</p>
+<p>为了实现 Pub/Sub 需要使用数据库暂存数据实现广播消息的作用，以自己的 demo 项目为例使用的是 redis 存储以键值对形式存放的JSON消息数据。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fl2qkjqgcwj30c106rt98.jpg" alt="cable.yml"></p>
+<p>在本地测试成功后上传到 heroku 登录后创建聊天的 channel 报错。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fl2qqr76smj30ih0ar3yr.jpg" alt="error"></p>
+<p>查询 log 后发现错误原因是 redis 无法建立联接导致抛出异常。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fl2qto17pzj30ht01wt92.jpg" alt="reason"></p>
+<p>原来导致 redis 无法联接的原因是想要在 heroku 上使用 redis 必须使用 heroku 自家的 add_on</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fl2qx8iqh8j30n60av0uw.jpg" alt="add_on"></p>
+<p>Tips: 虽然 heroku 自家的 redis add on 也有免费的套餐可选，但是必须要绑定信用卡才能使用。</p>
+<p>具体的设置过程可以参考官方的<a href="https://blog.heroku.com/real_time_rails_implementing_websockets_in_rails_5_with_action_cable#step-2-provision-the-redis-to-go-addon" target="_blank" rel="external">文档</a>，步骤也非常简单，只需要设置下 cable.yml 文件中的 adapter 和 production.rb 文件中的 URI 即可。</p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/10/17/undefined-method-for-nil-NilClass/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

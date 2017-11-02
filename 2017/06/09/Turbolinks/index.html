@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Turbolinks | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="errors," />
+  
+
+  <meta name="description" content="在之前 Nic 助教的直播教程中，提到有很多同学反应 js 失效的问题都是因为 RoR 自带的 Turbolinks 的原因导致。 今天无意中在carts/checkout页面按到了刷新，结果页面出现如下的报错提示。 根据报错信息的提示，是controller中缺少show的action，而在RESTful中show是get方法。 问题是carts/checkout页面在代码中使用的是post方法">
+<meta name="keywords" content="errors">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Turbolinks">
+<meta property="og:url" content="http://segxiong.github.io/2017/06/09/Turbolinks/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="在之前 Nic 助教的直播教程中，提到有很多同学反应 js 失效的问题都是因为 RoR 自带的 Turbolinks 的原因导致。 今天无意中在carts/checkout页面按到了刷新，结果页面出现如下的报错提示。 根据报错信息的提示，是controller中缺少show的action，而在RESTful中show是get方法。 问题是carts/checkout页面在代码中使用的是post方法">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fgbq6kaj7mj30k008saaf.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fgbqlrhcelj30jz07k0um.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fgbqtt1yo1j30se0jyh1z.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fgbr52laqhj31750qpgyr.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fgbra7zmtpj30yt0ga43d.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fl3uoov9z3j308504amx8.jpg">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Turbolinks">
+<meta name="twitter:description" content="在之前 Nic 助教的直播教程中，提到有很多同学反应 js 失效的问题都是因为 RoR 自带的 Turbolinks 的原因导致。 今天无意中在carts/checkout页面按到了刷新，结果页面出现如下的报错提示。 根据报错信息的提示，是controller中缺少show的action，而在RESTful中show是get方法。 问题是carts/checkout页面在代码中使用的是post方法">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fgbq6kaj7mj30k008saaf.jpg">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Turbolinks" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Turbolinks</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.06.09</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/errors/">errors</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>在之前 Nic 助教的直播教程中，提到有很多同学反应 js 失效的问题都是因为 RoR 自带的 Turbolinks 的原因导致。</p>
+<p>今天无意中在carts/checkout页面按到了刷新，结果页面出现如下的报错提示。<br><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fgbq6kaj7mj30k008saaf.jpg" alt=""></p>
+<p>根据报错信息的提示，是controller中缺少show的action，而在RESTful中show是get方法。</p>
+<p>问题是carts/checkout页面在代码中使用的是post方法（如图）。<br><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fgbqlrhcelj30jz07k0um.jpg" alt=""></p>
+<p>所以查看了一下server log，果不其然日志中显示，第一次进入carts/checkout页面是使用的post方法，但是第二次（刷新）的时候却是get方法。<br><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fgbqtt1yo1j30se0jyh1z.jpg" alt=""></p>
+<p>对此百思不得其解，最后slack的助教提示可能是turbolinks的原因，所以尝试删除掉turbolinks重走一遍出错流程，果然报错消失。</p>
+<p>PS：这个错误只在chrome上才会出现，safari上即使刷新也是可以正确使用post方法的。猜测是chrome和turbolinks的冲突造成。</p>
+<p>本来按着教程进行到这里，刚刚的问题也就解决了。但是由于魔改大赛，自己增加了很多新的代码上去，去掉turbolinks之后又出现了新的问题，flash不能在正确的时间显示。</p>
+<p>在助教提示下研究server log发现了异常的地方如图<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fgbr52laqhj31750qpgyr.jpg" alt=""></p>
+<p>正常情况下在用所有server返回的都应该是html页面，只有在使用ajax之后才会返回js。在这个show页面的form中我确实使用了ajax<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fgbra7zmtpj30yt0ga43d.jpg" alt=""></p>
+<p>但是问题在于，删除turbolinks之前，使用ajax后页面也是正常的。</p>
+<p>在一番Google之后，最后查看<a href="http://www.korenlc.com/remote-true-in-rails-forms/" target="_blank" rel="external">这篇文章</a>找到原因。</p>
+<p>所以最后的解决方案，也就有两种。一种是按那篇作者的方法，为页面添加js操作。另一种就是删掉remote： true这段代码，不使用ajax。</p>
+<p>后记: 最终的解决办法是把 checkout 页面的路由 从 post 改为 get</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fl3uoov9z3j308504amx8.jpg" alt=""></p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/06/05/EOF-Error/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/06/14/第二次魔改大赛总结/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

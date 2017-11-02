@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS基础知识 | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Tips," />
+  
+
+  <meta name="description" content="margin 与 padding 的差异字面上来说，margin是外边距而padding是内边距。直接包围内容的是内边距，内边距呈现了元素的背景，内边距的边缘是边框。边框以外是外边距，外边距默认是透明的。另外内边距不接受负值，而外边距可以为负。  什么是 box model即框模型，规定了元素框处理元素内容、内边距、边框和外边距的方式。框模型由里到外分别是元素(element)，内边距(padd">
+<meta name="keywords" content="Tips">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS基础知识">
+<meta property="og:url" content="http://segxiong.github.io/2017/04/14/CSS基础知识/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="margin 与 padding 的差异字面上来说，margin是外边距而padding是内边距。直接包围内容的是内边距，内边距呈现了元素的背景，内边距的边缘是边框。边框以外是外边距，外边距默认是透明的。另外内边距不接受负值，而外边距可以为负。  什么是 box model即框模型，规定了元素框处理元素内容、内边距、边框和外边距的方式。框模型由里到外分别是元素(element)，内边距(padd">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS基础知识">
+<meta name="twitter:description" content="margin 与 padding 的差异字面上来说，margin是外边距而padding是内边距。直接包围内容的是内边距，内边距呈现了元素的背景，内边距的边缘是边框。边框以外是外边距，外边距默认是透明的。另外内边距不接受负值，而外边距可以为负。  什么是 box model即框模型，规定了元素框处理元素内容、内边距、边框和外边距的方式。框模型由里到外分别是元素(element)，内边距(padd">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-CSS基础知识" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">CSS基础知识</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.04.14</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Tips/">Tips</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <ul>
+<li><p>margin 与 padding 的差异<br>字面上来说，margin是外边距而padding是内边距。直接包围内容的是内边距，内边距呈现了元素的背景，内边距的边缘是边框。边框以外是外边距，外边距默认是透明的。另外内边距不接受负值，而外边距可以为负。</p>
+</li>
+<li><p>什么是 box model<br>即框模型，规定了元素框处理元素内容、内边距、边框和外边距的方式。框模型由里到外分别是元素(element)，内边距(padding)，边框(border)和外边距(margin)。外边距默认是透明的，因此不会遮挡其后的任何元素。内边距、边框和外边距都是可选的，默认值是零。在 CSS 中，width 和 height 指的是内容区域的宽度和高度。增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸。</p>
+</li>
+<li><p>为何要使用 em 而非 px 来定义字的大小<br>设置字体大小有两种方式，px(绝对值)和em(相对值)。1em等于当前的字体尺寸，浏览器的默认字体是16px，1em等于16px。除IE浏览器外，用户能使用绝大多主流数浏览器对字体进行重新调整。为了避免在 Internet Explorer 中无法调整文本的问题，许多开发者使用em单位代替px。在所有浏览器中调整字体均有效的方案是为\<body>元素(父元素)以百分比设置默认的font-size值。</body></p>
+</li>
+<li><p>h1 {margin : 10px 0px 15px 5px;}<br>这是设置margin属性的一种简写方式，其属性值按顺时针分别表示margin-top(10px)，margin-right(0px)，margin-bottom(15px)，margin-left(15px)。</p>
+</li>
+</ul>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/04/13/HTML相关的一些基础概念/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/04/15/ORID-04-15/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

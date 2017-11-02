@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Routes member do 和 collection do | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Tips," />
+  
+
+  <meta name="description" content="Ruby on Rails的网址全是靠config/routes.rb文件生成，所以对于初学者弄懂路由可以说是非常重要的一步。而这其中常常让人困惑的主要是member do和collection do。 这两者字面上的区别是member是单个的成员，而collection是若干成员的合集。 除开这个两者最大的区别是url和helper path。以下面的设定为例， 1234567891011res">
+<meta name="keywords" content="Tips">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Routes member do 和 collection do">
+<meta property="og:url" content="http://segxiong.github.io/2017/05/15/Routes-member-do-和-collection-do/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="Ruby on Rails的网址全是靠config/routes.rb文件生成，所以对于初学者弄懂路由可以说是非常重要的一步。而这其中常常让人困惑的主要是member do和collection do。 这两者字面上的区别是member是单个的成员，而collection是若干成员的合集。 除开这个两者最大的区别是url和helper path。以下面的设定为例， 1234567891011res">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Routes member do 和 collection do">
+<meta name="twitter:description" content="Ruby on Rails的网址全是靠config/routes.rb文件生成，所以对于初学者弄懂路由可以说是非常重要的一步。而这其中常常让人困惑的主要是member do和collection do。 这两者字面上的区别是member是单个的成员，而collection是若干成员的合集。 除开这个两者最大的区别是url和helper path。以下面的设定为例， 1234567891011res">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Routes-member-do-和-collection-do" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Routes member do 和 collection do</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.05.15</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Tips/">Tips</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>Ruby on Rails的网址全是靠config/routes.rb文件生成，所以对于初学者弄懂路由可以说是非常重要的一步。而这其中常常让人困惑的主要是member do和collection do。</p>
+<p>这两者字面上的区别是member是单个的成员，而collection是若干成员的合集。</p>
+<p>除开这个两者最大的区别是url和helper path。以下面的设定为例，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">resources :photos do</div><div class="line">  member do</div><div class="line">    get :preview</div><div class="line">  end</div><div class="line">end</div><div class="line"></div><div class="line">resources :photos do</div><div class="line">  collection do</div><div class="line">    get :search</div><div class="line">  end</div><div class="line">end</div></pre></td></tr></table></figure>
+<ul>
+<li><p>member产生的url地址为<code>/photos/1/preview</code>，helper path为<code>preview_photo_path(photo)</code>。</p>
+</li>
+<li><p>collection产生的url地址为<code>/photos/search</code>，helper path为<code>search_photos_path</code>。</p>
+</li>
+</ul>
+<p>另外从产生的url和path能看出member是要求id参数的。</p>
+<p><a href="http://stackoverflow.com/questions/3028653/difference-between-collection-route-and-member-route-in-ruby-on-rails" target="_blank" rel="external">参考资料</a>。</p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/05/14/meetup-小结-5-14/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/05/16/belongs-to-和-has-many-has-one/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

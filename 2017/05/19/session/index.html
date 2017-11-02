@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>session | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="小结," />
+  
+
+  <meta name="description" content="session是一种持久网络协议，在用户或用户代理端（浏览器）和服务器端之间创建关联，从而起到交换数据包的作用机制，session在网络协议中是非常重要的部分。 之所以要使用session在代理端和服务器端创建关联是由http协议的非持续性决定的。为了降低服务器的压力，http请求会在“3次握手”之后断开链接。由于这种机制导致了服务器并不能识别同一个用户两次链接之间的联系。为了提高用户体验，ses">
+<meta name="keywords" content="小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="session">
+<meta property="og:url" content="http://segxiong.github.io/2017/05/19/session/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="session是一种持久网络协议，在用户或用户代理端（浏览器）和服务器端之间创建关联，从而起到交换数据包的作用机制，session在网络协议中是非常重要的部分。 之所以要使用session在代理端和服务器端创建关联是由http协议的非持续性决定的。为了降低服务器的压力，http请求会在“3次握手”之后断开链接。由于这种机制导致了服务器并不能识别同一个用户两次链接之间的联系。为了提高用户体验，ses">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="session">
+<meta name="twitter:description" content="session是一种持久网络协议，在用户或用户代理端（浏览器）和服务器端之间创建关联，从而起到交换数据包的作用机制，session在网络协议中是非常重要的部分。 之所以要使用session在代理端和服务器端创建关联是由http协议的非持续性决定的。为了降低服务器的压力，http请求会在“3次握手”之后断开链接。由于这种机制导致了服务器并不能识别同一个用户两次链接之间的联系。为了提高用户体验，ses">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-session" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">session</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.05.19</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Tips/">Tips</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>session是一种持久网络协议，在用户或用户代理端（浏览器）和服务器端之间创建关联，从而起到交换数据包的作用机制，session在网络协议中是非常重要的部分。</p>
+<p>之所以要使用session在代理端和服务器端创建关联是由http协议的非持续性决定的。为了降低服务器的压力，http请求会在“3次握手”之后断开链接。由于这种机制导致了服务器并不能识别同一个用户两次链接之间的联系。为了提高用户体验，session就是在这个背景下产生的。</p>
+<p>服务器端之所以能识别用户是通过客户端的cookie中存储的session id等信息的原因。通俗地说就是借由浏览器储存了一个识别证。每次浏览器发送http请求的时候，都会在头文件中带上cookie信息，从而告知服务器请求者的身份。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E4%BC%9A%E8%AF%9D_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6" target="_blank" rel="external">参考文档</a>)。</p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/05/18/ORID-05-18/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/05/20/find-by-find-和-where/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

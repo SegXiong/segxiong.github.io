@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>ORID-04-15 | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="日记," />
+  
+
+  <meta name="description" content="Objective今天为了解一个bug，耽误了快一个下午的时间，在做job-listing的管理者加分题的publish和hide action时候页面一直报错ActionController::InvalidAuthenticityToken in Admin::JobsController#hide 刚开始以为问题出在modle或者controller里面，所有一直在这两个页面检查错误，但是一">
+<meta name="keywords" content="日记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ORID-04-15">
+<meta property="og:url" content="http://segxiong.github.io/2017/04/15/ORID-04-15/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="Objective今天为了解一个bug，耽误了快一个下午的时间，在做job-listing的管理者加分题的publish和hide action时候页面一直报错ActionController::InvalidAuthenticityToken in Admin::JobsController#hide 刚开始以为问题出在modle或者controller里面，所有一直在这两个页面检查错误，但是一">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ORID-04-15">
+<meta name="twitter:description" content="Objective今天为了解一个bug，耽误了快一个下午的时间，在做job-listing的管理者加分题的publish和hide action时候页面一直报错ActionController::InvalidAuthenticityToken in Admin::JobsController#hide 刚开始以为问题出在modle或者controller里面，所有一直在这两个页面检查错误，但是一">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-ORID-04-15" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">ORID-04-15</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.04.15</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/ORID/">ORID</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>Objective<br>今天为了解一个bug，耽误了快一个下午的时间，在做job-listing的管理者加分题的publish和hide action时候页面一直报错<code>ActionController::InvalidAuthenticityToken in Admin::JobsController#hide</code> 刚开始以为问题出在modle或者controller里面，所有一直在这两个页面检查错误，但是一直没有找到问题所在。最后是另一位同学在slack上提示检查layout页面，最终找到了错误所在。原来是在写<code>&lt;%= csrf_meta_tags %&gt;</code>的时候少写了一个<code>=</code>。</p>
+<p>Reflective<br>和之前meetup的同学们说的一样，初学者编程中80%以上的错误都是粗心导致的，要么写错，要么少写，多写之类。</p>
+<p>Interpretive<br>以后再遇到bug不能钻牛角尖，给自己限定一个时间，比如半个小时。这个时间之内不能解决就一定要去slack求助助教或者同学。因为解一个bug太久会陷入焦躁的情绪并且耽误整体的进度。</p>
+<p>Decisional<br>由于这个bug浪费了今天太多的时间，整体的进度落后严重，明天必须再多点时间补上。</p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/04/14/CSS基础知识/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/04/16/meetup-小结-4-16/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>两个问题 | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="小结," />
+  
+
+  <meta name="description" content="本周的网站迭代中遇到两个问题：  flashes 被 nav 遮挡的问题。 本来打算使用navbar-fixed-top把网站改版成navbar会随着用户的滚动操作而一直保持在屏幕的最前端，刚开始以为一切都如预料的运行，但是后来在admin后台偶然更新一次job后发现页面会诡异的下移一段距离，刷新一下后又会恢复正常。最后才猛然醒悟是通知flashes被navbar挡住。最终的决绝方案是在layou">
+<meta name="keywords" content="小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="两个问题">
+<meta property="og:url" content="http://segxiong.github.io/2017/04/27/两个问题/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="本周的网站迭代中遇到两个问题：  flashes 被 nav 遮挡的问题。 本来打算使用navbar-fixed-top把网站改版成navbar会随着用户的滚动操作而一直保持在屏幕的最前端，刚开始以为一切都如预料的运行，但是后来在admin后台偶然更新一次job后发现页面会诡异的下移一段距离，刷新一下后又会恢复正常。最后才猛然醒悟是通知flashes被navbar挡住。最终的决绝方案是在layou">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="两个问题">
+<meta name="twitter:description" content="本周的网站迭代中遇到两个问题：  flashes 被 nav 遮挡的问题。 本来打算使用navbar-fixed-top把网站改版成navbar会随着用户的滚动操作而一直保持在屏幕的最前端，刚开始以为一切都如预料的运行，但是后来在admin后台偶然更新一次job后发现页面会诡异的下移一段距离，刷新一下后又会恢复正常。最后才猛然醒悟是通知flashes被navbar挡住。最终的决绝方案是在layou">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-两个问题" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">两个问题</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.04.27</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Tips/">Tips</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>本周的网站迭代中遇到两个问题：</p>
+<ol>
+<li>flashes 被 nav 遮挡的问题。<br> 本来打算使用<code>navbar-fixed-top</code>把网站改版成navbar会随着用户的滚动操作而一直保持在屏幕的最前端，刚开始以为一切都如预料的运行，但是后来在admin后台偶然更新一次job后发现页面会诡异的下移一段距离，刷新一下后又会恢复正常。最后才猛然醒悟是通知flashes被navbar挡住。<br>最终的决绝方案是在layout页面中给flahes单独嵌套一层div，将div css样式设置一个适当的margin-top问题解决。</li>
+</ol>
+<ol>
+<li>实现 floating toolbar（login）。<br> 刚开始发现flashes被遮挡引起的页面诡异下沉时，没找到解决方案，放弃了navbar的随屏滚动fix效果。改为使用在固定砸底部的toolbar。单纯的使用<code>navbar-fix-bottom</code>必定会导致页面底部的footer被遮挡，按照一般的思路是需要用到js监听toolbar的位置，动态的添加和移除带固定效果的类。<br>最后找到一个纯css的解决方案，并且只需要两行代码即可实现想要的效果。即<br><code>position: sticky;</code><br><code>bottom: 0;</code><br>但是需要注意的是，sticky属性的float是相对于七自身的父容器的，如果父容器没有空间浮动，这时候sticky属性的效果就类似于absolute。具体可以参考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blank" rel="external">这个链接</a>。</li>
+</ol>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/04/25/ORID-04-25/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/04/30/meetup-小结-4-30/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

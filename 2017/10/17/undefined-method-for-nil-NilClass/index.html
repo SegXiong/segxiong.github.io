@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>undefined method &#39;&lt;&#39; for nil:NilClass | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="errors," />
+  
+
+  <meta name="description" content="在用 action_cable 做 read 和 unread 标记时遇到了如题的报错画面。  本来的逻辑是用 chatroom_users 的 last_read_at 字段做标记。可是测试用户退出 app ，收到未读消息后，再次登录进入 chatroom 就出现了这个问题。 之所以出现这个报错是因为用于比较的 @chatroom_user.last_read_at 字段的值为 nil 无法进行">
+<meta name="keywords" content="errors">
+<meta property="og:type" content="article">
+<meta property="og:title" content="undefined method &#39;&lt;&#39; for nil:NilClass">
+<meta property="og:url" content="http://segxiong.github.io/2017/10/17/undefined-method-for-nil-NilClass/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="在用 action_cable 做 read 和 unread 标记时遇到了如题的报错画面。  本来的逻辑是用 chatroom_users 的 last_read_at 字段做标记。可是测试用户退出 app ，收到未读消息后，再次登录进入 chatroom 就出现了这个问题。 之所以出现这个报错是因为用于比较的 @chatroom_user.last_read_at 字段的值为 nil 无法进行">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fkvxmtudqcj30ss0dp40u.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fkvxz9ps1rj30hu084dhu.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fkvybajf9gj30jf048q3g.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fkvydpkuo8j30ql03sglx.jpg">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="undefined method &#39;&lt;&#39; for nil:NilClass">
+<meta name="twitter:description" content="在用 action_cable 做 read 和 unread 标记时遇到了如题的报错画面。  本来的逻辑是用 chatroom_users 的 last_read_at 字段做标记。可是测试用户退出 app ，收到未读消息后，再次登录进入 chatroom 就出现了这个问题。 之所以出现这个报错是因为用于比较的 @chatroom_user.last_read_at 字段的值为 nil 无法进行">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fkvxmtudqcj30ss0dp40u.jpg">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-undefined-method-for-nil-NilClass" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">undefined method &#39;&lt;&#39; for nil:NilClass</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.10.17</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/errors/">errors</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>在用 <code>action_cable</code> 做 read 和 unread 标记时遇到了如题的报错画面。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fkvxmtudqcj30ss0dp40u.jpg" alt="error image"></p>
+<p>本来的逻辑是用 <code>chatroom_users</code> 的 <code>last_read_at</code> 字段做标记。可是测试用户退出 app ，收到未读消息后，再次登录进入 chatroom 就出现了这个问题。</p>
+<p>之所以出现这个报错是因为用于比较的 <code>@chatroom_user.last_read_at</code> 字段的值为 nil 无法进行比较。另外 Rails 抛出这个错误也是为了<a href="https://stackoverflow.com/questions/19751427/undefined-method-for-nilnilclass-nomethoderror" target="_blank" rel="external">提醒开发者</a>比较的数据不是你所预期的值(或类型)。</p>
+<p>进入 Rails Console 进行测试，</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fkvxz9ps1rj30hu084dhu.jpg" alt="rails console"></p>
+<p>果然 <code>last_read_at</code> 这个字段的值是 nil 所以产生了这个错误。</p>
+<p>补救的办法也很简单，给 <code>last_read_at</code> 字段自动赋值即可。那现在的问题是应该用哪个时间点进行赋值呢？<br>由于我的这个应用使用了 devise 做登录认证，因此可以使用 devise 内建的 <a href="http://www.rubydoc.info/github/plataformatec/devise/Devise/Models/Trackable" target="_blank" rel="external">trackable</a> module 解决这个问题。</p>
+<p>针对我的这个情况正好 <code>last_sign_in_at</code> 适合这个情景。修改后的代码如下，</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fkvybajf9gj30jf048q3g.jpg" alt="solution"></p>
+<p>重新刷新页面问题解决。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fkvydpkuo8j30ql03sglx.jpg" alt="success"></p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/09/19/Capybara-fill-in/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/10/29/redis-on-heroku/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

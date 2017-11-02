@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>豆知识拾遗集 | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="小结," />
+  
+
+  <meta name="description" content="最近的学习中学到的一些小知识点，由于不能单独成文，所以用此文做一次小结。  Rails 在 form_for 表单中，会默认命名 input 的 id 是 model 名称和該属性名称，这里也就是 post_content (此外还有默认的 name post[content] )。因此 jquery 可以用 $(&amp;quot;#post_content&amp;quot;) 抓到那一个 input 元素。">
+<meta name="keywords" content="小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="豆知识拾遗集">
+<meta property="og:url" content="http://segxiong.github.io/2017/06/28/豆知识拾遗集/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="最近的学习中学到的一些小知识点，由于不能单独成文，所以用此文做一次小结。  Rails 在 form_for 表单中，会默认命名 input 的 id 是 model 名称和該属性名称，这里也就是 post_content (此外还有默认的 name post[content] )。因此 jquery 可以用 $(&amp;quot;#post_content&amp;quot;) 抓到那一个 input 元素。">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fh19smijs6j31870u1k4m.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fh19xgvfq1j30m701iq34.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fh1aczdnauj30q708fdha.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fh1adh3r9fj30qi09fq58.jpg">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="豆知识拾遗集">
+<meta name="twitter:description" content="最近的学习中学到的一些小知识点，由于不能单独成文，所以用此文做一次小结。  Rails 在 form_for 表单中，会默认命名 input 的 id 是 model 名称和該属性名称，这里也就是 post_content (此外还有默认的 name post[content] )。因此 jquery 可以用 $(&amp;quot;#post_content&amp;quot;) 抓到那一个 input 元素。">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fh19smijs6j31870u1k4m.jpg">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-豆知识拾遗集" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">豆知识拾遗集</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.06.28</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Tips/">Tips</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>最近的学习中学到的一些小知识点，由于不能单独成文，所以用此文做一次小结。</p>
+<ul>
+<li><p>Rails 在 <code>form_for</code> 表单中，会默认命名 input 的 id 是 model 名称和該属性名称，这里也就是 <code>post_content</code> (此外还有默认的 name <code>post[content]</code> )。因此 jquery 可以用 <code>$(&quot;#post_content&quot;)</code> 抓到那一个 input 元素。</p>
+</li>
+<li><p>在 chrome 的 inspect 中，选择 Network tab，再点击需要查看的 response 就是能看到 server 返回的 JSON 数据了。</p>
+</li>
+<li><p><code>form_for</code> 会绑定一个 model 来做编辑，而 <code>form_tag</code> 是完全自定义的表单。所以我们可以自定义我们要的 input 例如 <code>start_on</code>。 所以在向后端传送的数据 params 中，不一定都是model中存在的column， 可能只是一个传递数据的自定义 input。 另外查看源码的话，会发现 <code>&lt; input name=start_on &gt;</code> name中并没有相应的 model 做前缀。</p>
+</li>
+<li><p>在移除文件时 carrierwave 有一个内置的功能，会自动增加一个属性是 <code>:remove_xxxx</code>，如果这个属性有值，在更新 commit 的时候就会删除它。</p>
+</li>
+<li><p>在同一个 routes 文件中， <code>root “controller#action”</code> 可以出现多次，前提是在不同的 namespace 下。</p>
+</li>
+<li><p><code>rake routes</code> 后显示的路由和 routes 文件中定义的关系 如下图。</p>
+</li>
+</ul>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fh19smijs6j31870u1k4m.jpg" alt=""></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fh19xgvfq1j30m701iq34.jpg" alt=""></p>
+<p>除开 namespace 的影响，两图相同颜色框住的部分是对应的关系。</p>
+<ul>
+<li><code>mount_uploader</code> vs <code>mount_uploaders</code>, 首先看下文档中的解释说明。</li>
+</ul>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fh1aczdnauj30q708fdha.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fh1adh3r9fj30qi09fq58.jpg" alt=""></p>
+<p>两者的差别只在于 uploaders 存储的文件按数组的形式存储与读取。</p>
+<p>实际上使用 uploader 也能实现多图上传，但是需要自己定义 name 属性（以数组的形式）。</p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/06/22/inverse-of/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/07/31/月度总结/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

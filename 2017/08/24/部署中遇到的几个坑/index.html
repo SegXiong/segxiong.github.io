@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>部署中遇到的几个坑 | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="小结," />
+  
+
+  <meta name="description" content="最近用阿里云 + Nginx + Capistrano 实作上线了一个自己的小型项目。在这个过程中遇到了几个坑，记录分享之。 修改服务器用户密码所幸忘记密码的不是 root 账户，所以解决的方法也比较简单。 passwd xxx  （xxx用户名） 按回车键后，将提示输入用户 xxx 的新密码（root 用户不需要知道旧的密码）。如果一个普通用户想要修改自己的密码，该用户会被要求输入旧的密码（这是">
+<meta name="keywords" content="小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署中遇到的几个坑">
+<meta property="og:url" content="http://segxiong.github.io/2017/08/24/部署中遇到的几个坑/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="最近用阿里云 + Nginx + Capistrano 实作上线了一个自己的小型项目。在这个过程中遇到了几个坑，记录分享之。 修改服务器用户密码所幸忘记密码的不是 root 账户，所以解决的方法也比较简单。 passwd xxx  （xxx用户名） 按回车键后，将提示输入用户 xxx 的新密码（root 用户不需要知道旧的密码）。如果一个普通用户想要修改自己的密码，该用户会被要求输入旧的密码（这是">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="部署中遇到的几个坑">
+<meta name="twitter:description" content="最近用阿里云 + Nginx + Capistrano 实作上线了一个自己的小型项目。在这个过程中遇到了几个坑，记录分享之。 修改服务器用户密码所幸忘记密码的不是 root 账户，所以解决的方法也比较简单。 passwd xxx  （xxx用户名） 按回车键后，将提示输入用户 xxx 的新密码（root 用户不需要知道旧的密码）。如果一个普通用户想要修改自己的密码，该用户会被要求输入旧的密码（这是">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改服务器用户密码"><span class="toc-text">修改服务器用户密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新数据库用户密码"><span class="toc-text">更新数据库用户密码</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-部署中遇到的几个坑" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">部署中遇到的几个坑</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.08.24</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Tips/">Tips</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>最近用阿里云 + Nginx + Capistrano 实作上线了一个自己的小型项目。在这个过程中遇到了几个坑，记录分享之。</p>
+<h2 id="修改服务器用户密码"><a href="#修改服务器用户密码" class="headerlink" title="修改服务器用户密码"></a>修改服务器用户密码</h2><p>所幸忘记密码的不是 root 账户，所以解决的方法也比较简单。</p>
+<p><code>passwd xxx</code>  （xxx用户名）</p>
+<p>按回车键后，将提示输入用户 xxx 的新密码（root 用户不需要知道旧的密码）。如果一个普通用户想要修改自己的密码，该用户会被要求输入旧的密码（这是一个安全特性，以避免当你离开你的坐位有人试图修改你的密码）。</p>
+<h2 id="更新数据库用户密码"><a href="#更新数据库用户密码" class="headerlink" title="更新数据库用户密码"></a>更新数据库用户密码</h2><p>使用修改用户密码的指令（如下）进行修改</p>
+<p><code>update user set password=PASSWORD(&#39;my_password&#39;) where User=&#39;root&#39;;</code></p>
+<p>时提示 <code>ERROR 1054 (42S22): Unknown column &#39;password&#39;</code></p>
+<p>经过 google 后得知 <code>password</code> 字段改成了 <code>authentication_string</code>。</p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/07/31/月度总结/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/09/19/Capybara-fill-in/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

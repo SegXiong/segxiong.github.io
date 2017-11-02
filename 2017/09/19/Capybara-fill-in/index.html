@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Capybara &#39;fill_in&#39; | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="小结," />
+  
+
+  <meta name="description" content="最近用Capybara做用户测试的时候总是遇到 Capybara::ElementNotFound: 错误  仔细检查代码，发现原来是错把 &amp;lt;label&amp;gt; 的值放到 fill_in 造成的 一时好奇查阅了 capybara 的文档得知原来 fill_in 除了通过 label text 定位以外还能使用 id 和 name 捕获。  Locate a text field or tex">
+<meta name="keywords" content="小结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Capybara &#39;fill_in&#39;">
+<meta property="og:url" content="http://segxiong.github.io/2017/09/19/Capybara-fill-in/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="最近用Capybara做用户测试的时候总是遇到 Capybara::ElementNotFound: 错误  仔细检查代码，发现原来是错把 &amp;lt;label&amp;gt; 的值放到 fill_in 造成的 一时好奇查阅了 capybara 的文档得知原来 fill_in 除了通过 label text 定位以外还能使用 id 和 name 捕获。  Locate a text field or tex">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fkqcslld9pj30hy0b1aca.jpg">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capybara &#39;fill_in&#39;">
+<meta name="twitter:description" content="最近用Capybara做用户测试的时候总是遇到 Capybara::ElementNotFound: 错误  仔细检查代码，发现原来是错把 &amp;lt;label&amp;gt; 的值放到 fill_in 造成的 一时好奇查阅了 capybara 的文档得知原来 fill_in 除了通过 label text 定位以外还能使用 id 和 name 捕获。  Locate a text field or tex">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fkqcslld9pj30hy0b1aca.jpg">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Capybara-fill-in" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Capybara &#39;fill_in&#39;</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.09.19</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Tips/">Tips</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>最近用Capybara做用户测试的时候总是遇到 <code>Capybara::ElementNotFound:</code> 错误</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fkqcslld9pj30hy0b1aca.jpg" alt="error message"></p>
+<p>仔细检查代码，发现原来是错把 <code>&lt;label&gt;</code> 的值放到 <code>fill_in</code> 造成的</p>
+<p>一时好奇查阅了 capybara 的<a href="http://www.rubydoc.info/github/jnicklas/capybara/Capybara/Node/Actions:fill_in" target="_blank" rel="external">文档</a>得知原来 fill_in 除了通过 label text 定位以外还能使用 id 和 name 捕获。</p>
+<blockquote>
+<p>Locate a text field or text area and fill it in with the given text The field can be found via its name, id or label text.</p>
+</blockquote>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/08/24/部署中遇到的几个坑/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/10/17/undefined-method-for-nil-NilClass/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

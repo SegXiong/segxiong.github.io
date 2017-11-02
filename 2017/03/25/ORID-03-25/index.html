@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>ORID-03-25 | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="日记," />
+  
+
+  <meta name="description" content="Objective今天遇到了学 ruby on rails 后的第一个问题，bundle install的时候出现ffi corrupted错误，并且错误一直循环。最后靠Google到的方法成功解决。方法地址 Reflective一开始的时候非常挫败，可能因为出现的这个错误是教程上没有的原因吧。后来在助教的热心帮助和鼓励下坚持了下来。 Interpretive出现和预想的不一样的错误的时候不要慌乱">
+<meta name="keywords" content="日记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ORID-03-25">
+<meta property="og:url" content="http://segxiong.github.io/2017/03/25/ORID-03-25/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="Objective今天遇到了学 ruby on rails 后的第一个问题，bundle install的时候出现ffi corrupted错误，并且错误一直循环。最后靠Google到的方法成功解决。方法地址 Reflective一开始的时候非常挫败，可能因为出现的这个错误是教程上没有的原因吧。后来在助教的热心帮助和鼓励下坚持了下来。 Interpretive出现和预想的不一样的错误的时候不要慌乱">
+<meta property="og:updated_time" content="2017-11-02T10:16:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ORID-03-25">
+<meta name="twitter:description" content="Objective今天遇到了学 ruby on rails 后的第一个问题，bundle install的时候出现ffi corrupted错误，并且错误一直循环。最后靠Google到的方法成功解决。方法地址 Reflective一开始的时候非常挫败，可能因为出现的这个错误是教程上没有的原因吧。后来在助教的热心帮助和鼓励下坚持了下来。 Interpretive出现和预想的不一样的错误的时候不要慌乱">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Objective"><span class="toc-text">Objective</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reflective"><span class="toc-text">Reflective</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Interpretive"><span class="toc-text">Interpretive</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Decisional"><span class="toc-text">Decisional</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-ORID-03-25" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">ORID-03-25</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.25</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/ORID/">ORID</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="Objective"><a href="#Objective" class="headerlink" title="Objective"></a>Objective</h1><p>今天遇到了学 ruby on rails 后的第一个问题，<code>bundle install</code>的时候出现<code>ffi corrupted</code>错误，并且错误一直循环。<br>最后靠Google到的方法成功解决。<a href="http://stackoverflow.com/questions/27415904/bundle-install-failed-due-to-bundlergemspecerror-could-not-read-gem-at" target="_blank" rel="external">方法地址</a></p>
+<h1 id="Reflective"><a href="#Reflective" class="headerlink" title="Reflective"></a>Reflective</h1><p>一开始的时候非常挫败，可能因为出现的这个错误是教程上没有的原因吧。<br>后来在助教的热心帮助和鼓励下坚持了下来。</p>
+<h1 id="Interpretive"><a href="#Interpretive" class="headerlink" title="Interpretive"></a>Interpretive</h1><p>出现和预想的不一样的错误的时候不要慌乱，要相信总会有解决方法的。<br>Google是个学习的好帮手，要善用Google搜索问题。</p>
+<h1 id="Decisional"><a href="#Decisional" class="headerlink" title="Decisional"></a>Decisional</h1><p>继续努力，就算遇到下一个问题也不要惊慌气馁。</p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/03/20/hello-world/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/03/26/ORID-03-26/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
