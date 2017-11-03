@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>error: You need to sign in or sign up before continuing | SegXiong&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="errors," />
+  
+
+  <meta name="description" content="在实作 logout API的时候返回如题的 json 错误信息。  出现这个报错的原因是在 auth_controller 中的 before_action callback验证。  平时使用 devise 的时候登入登出，默认的 devise controller 都会使用 sign_in 方法帮我们设置好 current_user，但是由于我们做 auth_controler 的时候重新设置">
+<meta name="keywords" content="errors">
+<meta property="og:type" content="article">
+<meta property="og:title" content="error: You need to sign in or sign up before continuing">
+<meta property="og:url" content="http://segxiong.github.io/2017/11/03/error-You-need-to-sign-in-or-sign-up-before-continuing/index.html">
+<meta property="og:site_name" content="SegXiong&#39;s Blog">
+<meta property="og:description" content="在实作 logout API的时候返回如题的 json 错误信息。  出现这个报错的原因是在 auth_controller 中的 before_action callback验证。  平时使用 devise 的时候登入登出，默认的 devise controller 都会使用 sign_in 方法帮我们设置好 current_user，但是由于我们做 auth_controler 的时候重新设置">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fl4t5ix64hj30uf0e20uj.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fl4tbkmzrkj30et01tglr.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fl4tmlrc6cj30hu079js3.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fl4tnlt48wj30u80dhtae.jpg">
+<meta property="og:updated_time" content="2017-11-03T05:17:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="error: You need to sign in or sign up before continuing">
+<meta name="twitter:description" content="在实作 logout API的时候返回如题的 json 错误信息。  出现这个报错的原因是在 auth_controller 中的 before_action callback验证。  平时使用 devise 的时候登入登出，默认的 devise controller 都会使用 sign_in 方法帮我们设置好 current_user，但是由于我们做 auth_controler 的时候重新设置">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fl4t5ix64hj30uf0e20uj.jpg">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-error-You-need-to-sign-in-or-sign-up-before-continuing" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">error: You need to sign in or sign up before continuing</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.11.03</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Seg Xiong</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/errors/">errors</a>
+  </span>
+
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>在实作 logout API的时候返回如题的 json 错误信息。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fl4t5ix64hj30uf0e20uj.jpg" alt="error"></p>
+<p>出现这个报错的原因是在 <code>auth_controller</code> 中的 <code>before_action</code> callback验证。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fl4tbkmzrkj30et01tglr.jpg" alt="callback"></p>
+<p>平时使用 devise 的时候登入登出，默认的 devise controller 都会使用 <code>sign_in</code> 方法帮我们设置好 <code>current_user</code>，但是由于我们做 <code>auth_controler</code> 的时候重新设置 controller 继承自 <code>api_controller</code> 而 <code>api_ctroller</code> 又重新继承自 ActionController::base， 所以这个时候 devise 并不能自动登入并设置 <code>current_user</code>。 也就出现了以上的报错。</p>
+<p>解决的方法是在为 <code>api_controller</code> 手动设置 <code>sign_in</code> 方法。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fl4tmlrc6cj30hu079js3.jpg" alt="solution"></p>
+<p>最后用 Postman 测试通过。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fl4tnlt48wj30u80dhtae.jpg" alt="ok"></p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/10/29/redis-on-heroku/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
